@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Test Sayfası</title>
+    <script>
+        let counter = 30; // Sayaç başlangıç değeri (30 saniye)
+        let price = 100;  // Fiyat başlangıç değeri
+
+        // Geri sayım fonksiyonu
+        function startCounter() {
+            const counterElement = document.getElementById('counter');
+            const priceElement = document.getElementById('price');
+            const interval = setInterval(() => {
+                if (counter > 0) {
+                    counter--;
+                    counterElement.innerText = counter;
+                } else {
+                    clearInterval(interval);
+                    alert('Sayaç bitti!');
+                }
+
+                // Fiyatı rastgele artır (1-5 arası)
+                price += Math.floor(Math.random() * 5) + 1;
+                priceElement.innerText = price + ' TL';
+            }, 1000);
+        }
+    </script>
+</head>
+<body onload="startCounter()">
+    <h1>OCR Test Sayfası</h1>
+
+    <!-- Sayaç -->
+    <div id="counter" style="font-size: 48px; margin: 20px;">30</div>
+
+    <!-- Fiyat göstergesi -->
+    <h2>Fiyat: <span id="price" style="color: green; font-size: 36px;">100 TL</span></h2>
+
+    <!-- Buton -->
+    <button onclick="alert('Butona tıklandı!')">Tıklanacak Buton</button>
+</body>
+</html>
