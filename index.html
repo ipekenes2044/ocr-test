@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Test Sayfası</title>
+    <script>
+        let price = 100;
+        let counter = 60; // Sayaç başlangıç değeri: 1 dakika (60 saniye)
+
+        function increasePrice() {
+            const priceElement = document.getElementById('price');
+            price += Math.floor(Math.random() * 5) + 1;
+            priceElement.innerText = price + ' ₺';
+        }
+
+        function startCounter() {
+            const counterElement = document.getElementById('counter');
+            const interval = setInterval(() => {
+                if (counter > 0) {
+                    counter--;
+                    counterElement.innerText = counter + ' saniye';
+                } else {
+                    clearInterval(interval);
+                    alert('Sayaç bitti!');
+                }
+            }, 1000);
+        }
+
+        function placeBid() {
+            const bidInput = document.getElementById('bidInput').value;
+            alert('Teklif verildi: ' + bidInput + ' ₺');
+        }
+
+        setInterval(increasePrice, 2000);
+        window.onload = startCounter;
+    </script>
+</head>
+<body>
+    <h1>OCR Test Sayfası</h1>
+
+    <!-- Fiyat Bölümü -->
+    <div id="price" style="font-size: 48px; margin: 20px;">100 ₺</div>
+
+    <!-- Sayaç Bölümü -->
+    <div id="counter" style="font-size: 24px; margin: 10px;">60 saniye</div>
+
+    <!-- Teklif Girişi -->
+    <input type="text" id="bidInput" placeholder="Teklifinizi girin" style="font-size: 18px; padding: 5px; margin: 10px;">
+    <button onclick="placeBid()" style="font-size: 18px; padding: 5px;">Teklif Ver</button>
+
+</body>
+</html>
